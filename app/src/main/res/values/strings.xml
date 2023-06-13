@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PrimeraAplicacion</string>
+    <string name="aceptar">Ingresar</string>
+    <string name="salir">Salir</string>
+    <string name="hint_nombre">Ingrese nombre</string>
+    <string name="titulo_alumnos">Maestro de alumnos</string>
+    <string name="matricula">Matricula</string>
+    <string name="correo">Correo</string>
+    <string name="carrera">Carrera</string>
+    <string name="listar">Listar</string>
+</resources>

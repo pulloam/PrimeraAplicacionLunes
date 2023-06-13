@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">First App</string>
+    <string name="aceptar">Log in</string>
+    <string name="salir">Exit</string>
+    <string name="hint_nombre">Input name</string>
+    <string name="titulo_alumnos">Students file</string>
+    <string name="matricula">Enrollment</string>
+    <string name="correo">Email</string>
+    <string name="carrera">Career</string>
+    <string name="listar">Report</string>
+</resources>
