@@ -16,9 +16,11 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private TextView tvTit;
     private EditText etMatricula,etNombre, etCorreo, etCarrera;
-    private Button btnAce,btnSal, btnListar;
+    private Button btnAce,btnSal, btnAvanzar, btnRetroceder;
 
     private ArrayList<Alumno> losAlumnos = new ArrayList<>();
+
+    private int indice = 0;
 
 
     @Override
@@ -38,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
         etCarrera = findViewById(R.id.etCarrera);
         btnAce = findViewById(R.id.btnAceptar);
         btnSal = findViewById(R.id.btnSalir);
-        btnListar = findViewById(R.id.btnListar);
+        btnAvanzar = findViewById(R.id.btnAvanzar);
+        btnRetroceder = findViewById(R.id.btnRetroceder);
     }
 
     private Boolean validarDatos(){
@@ -114,6 +117,28 @@ public class MainActivity extends AppCompatActivity {
         etMatricula.requestFocus();
     }
 
+    private void avanzar(){
+        mostrarAlumno();
+        if(indice < losAlumnos.size() - 1)
+            indice++;
+    }
+
+    private void retroceder(){
+        mostrarAlumno();
+        if(indice > 0)
+            indice--;
+        else
+            btnRetroceder.setEnabled(false);
+    }
+
+    private void mostrarAlumno(){
+        Alumno alumno = losAlumnos.get(indice);
+        etMatricula.setText(String.valueOf(alumno.getMatricula()));
+        etNombre.setText(alumno.getNombre());
+        etCorreo.setText(alumno.getCorreo());
+        etCarrera.setText(alumno.getCarrera());
+    }
+
     private void eventos(){
         btnAce.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,10 +154,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnListar.setOnClickListener(new View.OnClickListener() {
+        btnAvanzar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listarAlumnos();
+                avanzar();
+            }
+        });
+
+        btnRetroceder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                retroceder();
             }
         });
     }

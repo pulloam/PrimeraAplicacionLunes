@@ -9,4 +9,6 @@
     <string name="correo">Email</string>
     <string name="carrera">Career</string>
     <string name="listar">Report</string>
+    <string name="retroceder">Previous</string>
+    <string name="avanzar">Next</string>
 </resources>

@@ -8,4 +8,6 @@
     <string name="correo">Correo</string>
     <string name="carrera">Carrera</string>
     <string name="listar">Listar</string>
+    <string name="retroceder">Retroceder</string>
+    <string name="avanzar">Avanzar</string>
 </resources>
