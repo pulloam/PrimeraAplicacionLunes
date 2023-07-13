@@ -2,6 +2,7 @@ package com.example.primeraaplicacion;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private TextView tvTit;
     private EditText etMatricula,etNombre, etCorreo, etCarrera;
-    private Button btnAce,btnSal, btnAvanzar, btnRetroceder;
+    private Button btnAce,btnSal, btnAvanzar, btnRetroceder, btnListar;
 
     private ArrayList<Alumno> losAlumnos = new ArrayList<>();
 
@@ -32,6 +33,14 @@ public class MainActivity extends AppCompatActivity {
         eventos();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        limpiarPantalla();
+        indice = 0;
+    }
+
     private void referencias(){
         tvTit = findViewById(R.id.tvTitulo);
         etMatricula = findViewById(R.id.etMatricula);
@@ -42,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         btnSal = findViewById(R.id.btnSalir);
         btnAvanzar = findViewById(R.id.btnAvanzar);
         btnRetroceder = findViewById(R.id.btnRetroceder);
+        btnListar = findViewById(R.id.btnListar);
     }
 
     private Boolean validarDatos(){
@@ -104,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
             losAlumnos.add(alumno);
             limpiarPantalla();
+            btnAvanzar.setEnabled(true);
             Toast.makeText(this, "Alumno agregado", Toast.LENGTH_LONG).show();
         }
     }
@@ -119,24 +130,32 @@ public class MainActivity extends AppCompatActivity {
 
     private void avanzar(){
         mostrarAlumno();
-        if(indice < losAlumnos.size() - 1)
+        if(indice < losAlumnos.size() - 1) {
             indice++;
+        }else{
+            btnAvanzar.setEnabled(false);
+            btnRetroceder.setEnabled(true);
+        }
     }
 
     private void retroceder(){
         mostrarAlumno();
-        if(indice > 0)
+        if(indice > 0) {
             indice--;
-        else
+        }else {
             btnRetroceder.setEnabled(false);
+            btnAvanzar.setEnabled(true);
+        }
     }
 
     private void mostrarAlumno(){
-        Alumno alumno = losAlumnos.get(indice);
-        etMatricula.setText(String.valueOf(alumno.getMatricula()));
-        etNombre.setText(alumno.getNombre());
-        etCorreo.setText(alumno.getCorreo());
-        etCarrera.setText(alumno.getCarrera());
+        if(losAlumnos.size() > 0) {
+            Alumno alumno = losAlumnos.get(indice);
+            etMatricula.setText(String.valueOf(alumno.getMatricula()));
+            etNombre.setText(alumno.getNombre());
+            etCorreo.setText(alumno.getCorreo());
+            etCarrera.setText(alumno.getCarrera());
+        }
     }
 
     private void eventos(){
@@ -167,6 +186,18 @@ public class MainActivity extends AppCompatActivity {
                 retroceder();
             }
         });
+
+        btnListar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, ListadoActivity.class);
+                i.putExtra("listado", losAlumnos);
+                i.putExtra("nombre", "maria jesus");
+                i.putExtra("edad", 25);
+                startActivity(i);
+            }
+        });
+
     }
 
 }

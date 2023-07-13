@@ -1,6 +1,10 @@
 package com.example.primeraaplicacion;
 
-public class Alumno {
+import androidx.annotation.NonNull;
+
+import java.io.Serializable;
+
+public class Alumno implements Serializable {
     private int matricula;
     private String nombre;
     private String correo;
@@ -50,4 +54,10 @@ public class Alumno {
 
     //endregion
 
+
+    @NonNull
+    @Override
+    public String toString() {
+        return matricula + " " + nombre;
+    }
 }

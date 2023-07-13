@@ -74,7 +74,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="12dp">
 
@@ -100,4 +100,9 @@
             android:text="@string/avanzar" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btnListar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/listar_alumnos" />
 </LinearLayout>

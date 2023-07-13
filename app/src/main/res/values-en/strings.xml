@@ -11,4 +11,5 @@
     <string name="listar">Report</string>
     <string name="retroceder">Previous</string>
     <string name="avanzar">Next</string>
+    <string name="listar_alumnos">Students report</string>
 </resources>
